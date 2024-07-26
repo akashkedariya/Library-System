@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{%  load static %}
+<br>
+<center>
+   <h1 class="display-5"> Submit book in Library</h1>
+</center>
+<br><br>
+
+<img src="{% static 'images/bl.jpg' %}" style="width:1100px;height:700px; border-radius: 3%;" >
+
+<div class="container border border-white p-1 mt-10" style=" width: 650px; position: absolute; top: 400px; left: 1575px;" >
+
+<!-- <div class="container border border-dark p-3 mt-10" style="width: 550px; margin-right: 50px; margin-bottom: 400px;"> -->
+    <!-- {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    {% endfor %} -->
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label><b>Book id</b></label>
+            <input type="text" name="book_id" class="form-control mail" placeholder="book_id" value=''>
+        </div>
+        <br>
+        <br>
+        <center>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </center>
+        <br>
+    
+    </form>
+<br>
+
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}     

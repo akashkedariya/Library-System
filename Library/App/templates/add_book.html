@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{%  load static %}
+<br>
+
+<br><br>
+
+<img src="{% static 'images/hd.jpg' %}" style="width:1100px;height:700px; border-radius: 18px; margin-left: 30px;" >
+
+<div class="container border border-white p-1 mt-10" style=" width: 650px; position: absolute; top: 400px; left: 1575px;" >
+
+     <form action="" method="POST" class=" form-control">
+        <h1 >Add book Here</h1>
+        {% csrf_token %}
+        {{ fm.as_p }}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+        <a href="{% url 'show_book' %}" class="sm-2 btn btn-success" >Show_book</a>
+
+     </form> 
+
+       <center>
+           <a href="{% url 'show_book' %}">Books details</a>
+       </center>
+  
+   </form>
+   <br>
+   
+   {% for message in messages %}
+   <div class="alert alert-danger" role="alert">
+       {{message}}
+       
+   </div>
+   {% endfor %}
+
+</div>
+
+{% endblock %}

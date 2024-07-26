@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<img src="{% static 'images/baby.jpg' %}" style="margin-left: 1300px; margin-top: 300px; border-radius: 18px; width: 750px; height: 500px;" >
+
+
+    <form action="" method="POST">
+        
+    </form>
+
+    <br><br>
+    <h1 class="" style="margin-top: -803px; margin-left: 20px;"> Books Information</h1>
+<br>
+    {% if book_data %}
+    <table class="table table-success table-striped" style="width:50%; margin-left: 20px;">
+        <tr>
+          <th>Index</th>
+          <th>Book_Names</th>
+          <th>Author_name</th>
+          <th>Quantity</th>
+          <th>Subject</th>
+        </tr>
+        {% for dt in book_data %}
+        
+        <tr>
+          <td>{{dt.id}}</td>
+          <td>{{dt.book_name}}</td>
+          <td>{{dt.author_name}}</td>
+          <td>{{dt.quantity}}</td>
+          <td>{{dt.subject}}</td>
+
+          <td>
+              
+            <form action= "{% url 'issue_books' dt.id %}" method="POST">
+                {% csrf_token %}
+                  
+                <input type="submit" class="btn btn-primary btn-sm" value="Take book">
+            </form>
+
+          </td>
+           {% if user.is_authenticated %}
+              
+          <td>  
+            <a href="{% url 'book_update' dt.id %}" class="btn btn-success btn-sm" >Upadte book</a>
+          </td>
+           
+          <td> 
+            <form action= "{% url 'delete_book' dt.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+
+            </form> 
+            
+          </td>
+          {% endif %}
+          
+        </tr>
+
+        {% endfor %}
+    {% endif %}  
+    </table> 
+
+    <a href="{% url 'add-book' %}" class="sm-2 btn btn-success" >Add Book</a>
+    <a href="{% url 'filter_book' %}" class="btn btn-primary" >Filter_book</a>
+    <a href="{% url 'register' %}" class="sm-2 btn btn-secondary" >Register User</a>
+    <a href="{% url 'issue_bk' %}" class="btn btn-info" >Issue_book</a>
+    <a href="{% url 'issues_book_histry' %}" class="btn btn-info" >Issue_book_History</a>
+    
+
+
+
+    <!-- <input type="Submit" class="btn btn-info" value="Add Book">      -->
+
+  <!-- </body> -->
+<!-- </html> -->
+
+{% endblock %}

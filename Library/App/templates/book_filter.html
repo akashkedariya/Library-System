@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+
+<!-- <img src="{% static 'images/issue.png' %}" style="width:1100px;height:700px;" > -->
+
+
+    <form action= "{% url 'filter_book' %}" method="POST">
+              
+        {% csrf_token %}
+        <label for="fname">Book name:</label><br>
+        <input type="text" id="fname" name="book_name"><br>
+
+        <label for="fname">Index:</label><br>
+        <input type="text" id="fname" name="index"><br>
+
+        <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+        
+    </form>
+
+    <br><br>
+    <h1> Books Information</h1>
+    
+<br>
+    {% if book_data %}
+    <table class="table table-success table-striped" style="width:60%">
+        <tr>
+          <th>Index</th>
+          <th>Book_Names</th>
+          <th>Author_name</th>
+          <th>Quantity</th>
+          <th>Subject</th>
+        </tr>
+        {% for dt in book_data %}
+        
+        <tr>
+          <td>{{dt.id}}</td>
+          <td>{{dt.book_name}}</td>
+          <td>{{dt.author_name}}</td>
+          <td>{{dt.quantity}}</td>
+          <td>{{dt.subject}}</td>
+
+          <td>
+          </td>
+        </tr>
+
+        {% endfor %}
+    {% endif %}  
+    </table> 
+
+    <a href="{% url 'add-book' %}" class="sm-2 btn btn-success" >Add Book</a>
+    <a href="{% url 'show_book' %}" class="sm-2 btn btn-success" >Show_book</a>
+    <a href="{% url 'filter_book' %}" class="sm-2 btn btn-success" >Filter_book</a>
+
+{% endblock %}

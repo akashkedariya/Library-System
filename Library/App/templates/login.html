@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<center>
+   <h1 class="display-5">Login To Library</h1>
+</center>
+<br><br>
+<div class="container border border-dark p-3 mt-10" style="width: 550px">
+   <form action="" method="POST">
+       {% csrf_token %}
+       <div class="form-group">
+           <label><b>Email</b></label>
+           <input type="text" name="email" class="form-control mail" placeholder="Email" value=''>
+       </div>
+       <br>
+       <div class="form-group">
+           <label><b>Password</b></label>
+           <input type="password" name="password" class="form-control pass" placeholder="Password" value=''>
+       </div>
+       
+       <br>
+       <center>
+           <button type="submit" class="btn btn-primary">Login</button>
+       </center>
+       <br>
+       <center>
+           <a href="{% url 'register' %}" class = "btn btn-success">Sign Up</a>
+
+           <!-- <a href="{% url 'register' %}"><button type="submit" class="btn btn-success ">Sign Up</button></a> -->
+       </center>
+       <center>
+           <!-- <a href="admin">Login as admin</a> -->
+       </center>
+   </form>
+   <br>
+   {% for message in messages %}
+   <div class="alert alert-danger" role="alert">
+       {{message}}
+   </div>
+   {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container px-4 text-center">
+  <div class="row gx-5">
+    <div class="col">
+     <div class="p-3" style="margin-top:20px;">
+      <br><br>
+      <h1 >Update Books Information</h1>
+      <br>
+        <form method = 'POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <a href="{% url 'show_book' %}" class="sm-2 btn btn-success" >Show_book</a>
+
+          </form>
+        <br>
+
+        <a href="{% url 'add-book' %}" class="sm-2 btn btn-success" >Add Book</a>
+        <a href="{% url 'filter_book' %}" class="sm-2 btn btn-success" >Filter_book</a>
+
+     </div>
+    </div>
+    <div class="col">
+      <div class="p-3" style="margin-top:40px;">
+        <img src="{% static 'images/a.jpg' %}" style="border-radius: 18px; width: 750px; height: 500px;" >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container text-center">
+  <div class="row align-items-start" >
+    <div class="col" style="margin-top:130px;">
+      <br><br>
+      <h1 >Update Books Information</h1>
+      <br>
+        <form method = 'POST' style="margin-right:130px; ">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <a href="{% url 'show_book' %}" class="sm-2 btn btn-success" >Show_book</a>
+
+          </form>
+        <br>
+
+        <a href="{% url 'add-book' %}" class="sm-2 btn btn-success" >Add Book</a>
+        <a href="{% url 'filter_book' %}" class="sm-2 btn btn-success" >Filter_book</a>
+      
+    </div>
+
+    <div class="col" style="margin-top: 130px; margin-left: 20px;" >
+      <img src="{% static 'images/a.jpg' %}" style="border-radius: 18px; width: 750px; height: 500px;" >
+    </div>
+ 
+  </div>
+</div> -->
+
+<!-- <style>
+
+  div.mycontainer div {
+    width:50%;  
+    float:left;
+  }
+</style>
+
+<div class="mycontainer">
+
+  <div>
+    <img src="{% static 'images/college.jpg' %}" style="margin-left: 1500px; margin-top: 300px; border-radius: 18px; width: 750px; height: 500px;" >
+  </div>
+
+  <div>
+    <br><br>
+    <h1 class="" style="margin-left:30px ; margin-bottom: 2px; margin-top: -700px; ">Update Books Information</h1>
+    <br>
+      <form method = 'POST' style="margin-left:30px; ">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+
+          <a href="{% url 'show_book' %}" class="sm-2 btn btn-success" >Show_book</a>
+
+        </form>
+    
+      <br>
+
+      <a href="{% url 'add-book' %}" class="sm-2 btn btn-success" >Add Book</a>
+      <a href="{% url 'filter_book' %}" class="sm-2 btn btn-success" >Filter_book</a>
+  </div>
+
+</div> -->
+   
+  
+{% endblock %}
+
+
+<!-- <!DOCTYPE html>
+<html>
+<style>
+
+div.mycontainer div {
+  width:33%;  
+  float:left;
+}
+</style>
+<body>
+
+<div class="mycontainer">
+
+  <div style="background-color:#FFF4A3;">
+    <h2>London</h2>
+    <p>London is the capital city of England.</p>
+    <p>London has over 13 million inhabitants.</p>
+  </div>
+  
+  <div style="background-color:#FFC0C7;">
+    <h2>Oslo</h2>
+    <p>Oslo is the capital city of Norway.</p>
+    <p>Oslo has over 600.000 inhabitants.</p>
+  </div>
+  
+  <div style="background-color:#D9EEE1;">
+    <h2>Rome</h2>
+    <p>Rome is the capital city of Italy.</p>
+    <p>Rome has almost 3 million inhabitants.</p>
+  </div>
+
+</div>
+
+</body>
+</html> -->
+
+
+
+
